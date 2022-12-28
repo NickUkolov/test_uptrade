@@ -1,0 +1,18 @@
+{% extends "index/base.html" %}
+{% load static menu_tag %}
+
+{% block title %}
+    Menu
+{% endblock %}
+{% block content %}
+    <h1>
+        Menu
+    </h1>
+    {% draw_menu 'Beer' %}
+    <p>
+    </p>
+    {% draw_menu 'Drink' %}
+    <p>
+    </p>
+    {% draw_menu 'Food' %}
+{% endblock %}

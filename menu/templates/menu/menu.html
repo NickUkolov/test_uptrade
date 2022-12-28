@@ -1,0 +1,29 @@
+{% load menu_tag %}
+{% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/script.js' %}"></script>
+
+<ul class="tree">
+    <li>
+        <b>{{ menu_name }}</b>
+        <span class="arrow"></span>
+        <ul class="nested-tree">
+            {% for item in items %}
+                <li>
+                    {% if not item.parent %}
+                        <a href="{% url 'menu_item' slug=item.slug %}">
+                            <span>{{ item.name }}</span>
+                        </a>
+                        {% if item.children.all|active_items %}
+                            <span class="arrow"></span>
+                            <ul class="nested-tree">
+                                {% include 'menu/sub_menu.html' %}
+                            </ul>
+                        {% endif %}
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+    </li>
+</ul>
+<script src="{% static 'js/script.js' %}"></script>
